@@ -5,7 +5,7 @@ Resources:
   AlexaSkill:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: index.handler
+      Handler: alexa-scribe/index.handler
       Runtime: nodejs6.10
       CodeUri: s3://midwest-hackathon/alexa-scribe.zip
       Events:
