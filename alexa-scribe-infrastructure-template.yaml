@@ -8,8 +8,6 @@ Resources:
       Handler: alexa-scribe/index.handler
       Runtime: nodejs6.10
       CodeUri: s3://midwest-hackathon/alexa-scribe.zip
-      Properties:
-        Role: arn:aws:iam::410717277537:role/LambdaExecutionRole
       Events:
         AlexaSkillEvent:
           Type: AlexaSkill
