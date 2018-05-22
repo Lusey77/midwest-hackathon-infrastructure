@@ -9,7 +9,9 @@ Resources:
       Runtime: nodejs6.10
       CodeUri: s3://midwest-hackathon/alexa-scribe.zip
       Events:
-        AlexaSkill: amzn1.ask.skill.22e6e083-10d3-47d1-a5a3-4ff131f04c5d
+        AlexaSkillEvent:
+          Type: AlexaSkill
+          AppId: amzn1.ask.skill.22e6e083-10d3-47d1-a5a3-4ff131f04c5d
   DDBTable:
     Type: "AWS::DynamoDB::Table"
     Properties:
