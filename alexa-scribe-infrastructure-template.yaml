@@ -10,8 +10,8 @@ Resources:
       CodeUri: s3://midwest-hackathon/alexa-scribe.zip
       
       AutoPublishAlias: live
-      #DeploymentPreference:
-       #Type: Linear10Percent1Minutes
+      DeploymentPreference:
+        Type: Linear10Percent1Minutes
       Events:
         AlexaSkillEvent:
           Type: AlexaSkill
