@@ -8,13 +8,12 @@ Resources:
       Handler: alexa-scribe/index.handler
       Runtime: nodejs6.10
       CodeUri: s3://midwest-hackathon/alexa-scribe.zip
-      
-      AutoPublishAlias: live
-      DeploymentPreference:
-        Type: Linear10PercentEvery1Minute
       Events:
         AlexaSkillEvent:
           Type: AlexaSkill
+      AutoPublishAlias: live
+      DeploymentPreference:
+        Type: Linear10PercentEvery1Minute
   DDBTable:
     Type: "AWS::DynamoDB::Table"
     Properties:
