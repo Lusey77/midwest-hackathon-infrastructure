@@ -1,0 +1,56 @@
+pipeline:
+  name: alexa-scribe-pipeline
+  roleArn: arn:aws:iam::410717277537:role/alexa-scribe-codepipeline-role
+  artifactStore:
+    type: S3
+    location: codepipeline-us-east-1-285665459630
+  stages:
+  - name: Source
+    actions:
+    - name: Source
+      actionTypeId:
+        category: Source
+        owner: ThirdParty
+        provider: GitHub
+        version: '1'
+      runOrder: 1
+      configuration:
+        Branch: dev
+        OAuthToken: "****"
+        Owner: Lusey77
+        PollForSourceChanges: 'false'
+        Repo: midwest-hackathon
+      outputArtifacts:
+      - name: MyApp
+      inputArtifacts: []
+  - name: Build
+    actions:
+    - name: AdminApproval
+      actionTypeId:
+        category: Approval
+        owner: AWS
+        provider: Manual
+        version: '1'
+      runOrder: 1
+      configuration:
+        NotificationArn: arn:aws:sns:us-east-1:410717277537:CodeCommitBuildApproval
+      outputArtifacts: []
+      inputArtifacts: []
+    - name: CodeBuild
+      actionTypeId:
+        category: Build
+        owner: AWS
+        provider: CodeBuild
+        version: '1'
+      runOrder: 2
+      configuration:
+        ProjectName: alexa-scribe-build
+      outputArtifacts:
+      - name: MyAppBuild
+      inputArtifacts:
+      - name: MyApp
+  version: 6
+metadata:
+  pipelineArn: arn:aws:codepipeline:us-east-1:410717277537:alexa-scribe-pipeline
+  created: 1526697764.165
+  updated: 1526955199.347
